@@ -1,0 +1,20 @@
+Data Structures and Algorithms
+
+List Operations:
+	- add/append(element), add element at the end of the list
+	- add/insert(index, element), add element at a given index, shiftting to the rigth
+	- remove(index)
+	- set/replace(index, element)
+	- get(index)
+	- search/contains(key)
+	- sort()
+	
+Recursion:   calling face(ascending) and returning face (descending)
+	- Tail, calls itself at the ending og the function
+	- Head, calls itself at the beggining of the function
+	- Tree, calls itself two times
+	- Indirect, calls another functions so in some point it is called
+	- Nested, fun( fun(n - 1), the function calls itself as parameter
+	
+	
+
