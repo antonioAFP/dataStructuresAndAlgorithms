@@ -73,10 +73,30 @@ int linearSearch(struct array *arr, int key){
   return -1;
 }
 
+/* arr must be previously ordered in asc*/
+int binarySearch(struct array arr, int key){
+  int low, mid, high;
+  low = 0;
+  high = arr.length - 1;
+
+  while(low <= high){
+      mid = (low + high) / 2;
+
+      if(key == arr.arr[mid])
+        return mid;
+      else if(key > arr.arr[mid]) //right side
+        low = mid + 1;
+      else  //left side
+        high = mid - 1;
+    }
+
+  return -1;
+}
+
 int main(){
   struct array arr = {{2, 3, 4, 5, 6}, 10, 5};
 
-  printf("%d", del(&arr, 3));
+  printf("%d", binarySearch(arr, 4));
   display(arr);
 
   return 0;
