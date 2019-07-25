@@ -16,5 +16,19 @@ Recursion:   calling face(ascending) and returning face (descending)
 	- Indirect, calls another functions so in some point it is called
 	- Nested, fun( fun(n - 1), the function calls itself as parameter
 	
+Array ADT (Abstract Data Type)
+operations:
+	- display()
+	- add/append()
+	- insert(index, x)
+	- delete(index)
+	- search(x)
+	- get(index)
+	- set(index, x)
+	- max()/min()
+	- reverse()
+	- shift/rotate()
+	
+	
 	
 
