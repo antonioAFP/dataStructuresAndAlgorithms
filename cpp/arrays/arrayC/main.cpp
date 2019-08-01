@@ -26,7 +26,7 @@
 #include <stdlib.h>
 
 struct array{
-  int arr[10];
+  int *arr;
   int size;
   int length;
 };
@@ -49,8 +49,8 @@ void insert(struct array *arr, int index, int x){
   int i;
 
   if(index >= 0 && index <= arr->length){
-      for(i = arr->length; i > index; i++)
-        arr->arr[i] = arr->arr[i + 1];
+      for(i = arr->length; i > index; i--)
+        arr->arr[i] = arr->arr[i - 1];
 
       arr->arr[index] = x;
       arr->length++;
@@ -240,11 +240,137 @@ struct array * merge(struct array *arr1, struct array *arr2){
   return arr3;
 }
 
-int main(){
-  struct array arr = {{2, 3, 4, 5, 6}, 10, 5};
+/*
+ * union 2 arrays without duplicates
+*/
+struct array unionArr(struct array *arr1, struct array *arr2){
+  int i, j, k;
+  i = j = k = 0;
 
-  printf("%d", binarySearch(arr, 4));
-  display(arr);
+  struct array *arr3 = (struct array *)malloc(sizeof(struct array));
+
+  while(i < arr1->length && j < arr2->length){
+      if(arr1->arr[i] < arr2->arr[j])
+        arr3->arr[k++] = arr1->arr[i++];
+      else if(arr2->arr[j] < arr1->arr[i]){
+        arr3->arr[k++] = arr2->arr[j++];
+      }else{
+        arr3->arr[k++] = arr1->arr[i++];
+        j++;
+        }
+    }
+
+  for(; i < arr1->length; i++)
+    arr3->arr[k++] = arr1->arr[i];
+  for(; j < arr2->length; j++)
+    arr3->arr[k++] = arr2->arr[j];
+
+  arr3->length = k;
+  arr3->size = 10;
+}
+
+
+/*
+ * only copies the intersectiong elements (only the same value elements)
+*/
+struct array intersection(struct array *arr1, struct array *arr2){
+  int i, j, k;
+  i = j = k = 0;
+
+  struct array *arr3 = (struct array *)malloc(sizeof(struct array));
+
+  while(i < arr1->length && j < arr2->length){
+      if(arr1->arr[i] < arr2->arr[j])
+        i++;
+      else if(arr2->arr[j] < arr1->arr[i]){
+        j++;
+      }else if(arr1->arr[i] == arr2->arr[j]){
+        arr3->arr[k++] = arr1->arr[i++];
+        j++;
+        }
+    }
+
+  arr3->length = k;
+  arr3->size = 10;
+}
+
+/*
+ * only different values
+*/
+struct array difference(struct array *arr1, struct array *arr2){
+  int i, j, k;
+  i = j = k = 0;
+
+  struct array *arr3 = (struct array *)malloc(sizeof(struct array));
+
+  while(i < arr1->length && j < arr2->length){
+      if(arr1->arr[i] < arr2->arr[j])
+        arr3->arr[k++] = arr1->arr[i++];
+      else if(arr2->arr[j] < arr1->arr[i]){
+        j++;
+      }else{
+        i++;
+        j++;
+        }
+    }
+
+  for(; i < arr1->length; i++)
+    arr3->arr[k++] = arr1->arr[i];
+
+
+  arr3->length = k;
+  arr3->size = 10;
+}
+
+int main(){
+  struct array arr1;
+  int choice;
+  int x, index;
+
+  printf("Enter size of array:");
+  scanf("%d", &arr1.size);
+
+  arr1.arr = (int *)malloc(arr1.size*sizeof (int));
+
+  do{
+    printf("\n-- Menu --\n");
+    printf("1. Insert\n");
+    printf("2. Delete\n");
+    printf("3. Search\n");
+    printf("4. Sum\n");
+    printf("5. Display\n");
+    printf("6. Exit\n");
+
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+      case 1:
+        printf("Enter an element and index: ");
+        scanf("%d%d", &x, &index);
+        insert(&arr1, index, x);
+        display(arr1);
+        break;
+      case 2:
+        printf("Enter index to delete: ");
+        scanf("%d", &index);
+        x = del(&arr1, index);
+        printf("Deleted element is: %d", x);
+        break;
+      case 3:
+        printf("Enter element to search: ");
+        scanf("%d", &x);
+        index = linearSearch(&arr1, x);
+        printf("element idex: %d", index);
+        break;
+      case 4:
+        printf("Sum is: %d\n", sum(arr1) );
+        break;
+      case 5:
+        display(arr1);
+        break;
+      }
+    }while(choice < 6);
 
   return 0;
 }
