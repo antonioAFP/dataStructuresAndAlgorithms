@@ -25,24 +25,25 @@
 
 using namespace std;
 
+template <class T>
 class array{
 private:
-  int *arr;
+  T *arr;
   int size;
   int length;
-  void swap(int *x, int *y);
+  void swap(T *x, T *y);
 
 public:
   array(){
     size = 10;
     length = 0;
-    arr = new int[size];
+    arr = new T[size];
   }
 
   array(int sz){
     size = sz;
     length = 0;
-    arr = new int[sz];
+    arr = new T[sz];
   }
 
   ~array(){
@@ -51,20 +52,20 @@ public:
 
 
   void display();
-  void append(int x);
-  void insert(int index, int x);
+  void append(T x);
+  void insert(int index, T x);
   int del(int index);
 
-  int linearSearch(int key);
-  int binarySearch(int key);
+  int linearSearch(T key);
+  int binarySearch(T key);
   int get(int index);
-  int set(int index, int x);
+  int set(int index, T x);
   int max();
   int min();
   int sum();
   float avg();
   void reverse();
-  void insertSort(int x);
+  void insertSort(T x);
   int isSorted();
   void reArrenge();
   array * merge(array arr2);
@@ -74,7 +75,8 @@ public:
 
 };
 
-void array::display(){
+template <class T>
+void array<T>::display(){
   int i;
 
   printf("\nElements are:\n");
@@ -83,12 +85,14 @@ void array::display(){
     printf("%d ", arr[i]);
 }
 
-void array::append(int x){
+template <class T>
+void array<T>::append(T x){
   if(length < size)
     arr[length++] = x;
 }
 
-void array::insert(int index, int x){
+template <class T>
+void array<T>::insert(int index, T x){
   int i;
 
   if(index >= 0 && index <= length){
@@ -101,7 +105,8 @@ void array::insert(int index, int x){
 }
 
 /*  delete */
-int array::del(int index){
+template <class T>
+int array<T>::del(int index){
   int x = 0;
   int i;
 
@@ -115,14 +120,16 @@ int array::del(int index){
   return 0;
 }
 
-void array::swap(int *x, int *y){
-  int tmp = *x;
+template <class T>
+void array<T>::swap(T *x, T *y){
+  T tmp = *x;
 
   *x = *y;
   *y = tmp;
 }
 
-int array::linearSearch(int key){
+template <class T>
+int array<T>::linearSearch(T key){
   int i;
 
   for(i = 0; i < length; i++){
@@ -136,7 +143,8 @@ int array::linearSearch(int key){
 }
 
 /* arr must be previously ordered in asc*/
-int array::binarySearch(int key){
+template <class T>
+int array<T>::binarySearch(T key){
   int low, mid, high;
   low = 0;
   high = length - 1;
@@ -155,19 +163,22 @@ int array::binarySearch(int key){
   return -1;
 }
 
-int array::get(int index){
+template <class T>
+int array<T>::get(int index){
   if(index >= 0 && index < length)
     return arr[index];
 
   return -1;
 }
 
-int array::set(int index, int x){
+template <class T>
+int array<T>::set(int index, T x){
   if(index >= 0 && index < length)
     arr[index] = x;
 }
 
-int array::max(){
+template <class T>
+int array<T>::max(){
   int max = arr[0];
   int i = 0;
 
@@ -178,7 +189,8 @@ int array::max(){
   return max;
 }
 
-int array::min(){
+template <class T>
+int array<T>::min(){
   int min = arr[0];
   int i = 0;
 
@@ -189,9 +201,10 @@ int array::min(){
   return min;
 }
 
-int array::sum(){
+template <class T>
+int array<T>::sum(){
   int i;
-  int s = 0;
+  T s = 0;
 
   for(i = 0; i < length; i++)
     s += arr[i];
@@ -199,11 +212,13 @@ int array::sum(){
   return s;
 }
 
-float array::avg(){
+template <class T>
+float array<T>::avg(){
   return (float)sum() / length;
 }
 
-void array::reverse(){
+template <class T>
+void array<T>::reverse(){
   int i, j;
 
   for(i = 0, j = length - 1; i < j; i++, j--){
@@ -211,7 +226,8 @@ void array::reverse(){
     }
 }
 
-void array::insertSort(int x){
+template <class T>
+void array<T>::insertSort(T x){
   int i = length - 1;
 
   if(length == size)
@@ -226,7 +242,8 @@ void array::insertSort(int x){
   length++;
 }
 
-int array::isSorted(){
+template <class T>
+int array<T>::isSorted(){
   int i;
 
   for(i = 0; i < length; i++){
@@ -240,7 +257,8 @@ int array::isSorted(){
 
 /* Negative values to the left side,
  * Positive values to the rigth side */
-void array::reArrenge(){
+template <class T>
+void array<T>::reArrenge(){
   int i, j;
   i = 0;
   j = length - 1;
@@ -258,12 +276,13 @@ void array::reArrenge(){
 /*
  * merge 2 ordered arrays
 */
-array * array::merge(array arr2){
+template <class T>
+array<T> * array<T>::merge(array arr2){
   int i = 0;
   int j = 0;
   int k = 0;
 
-  array *arr3 = new array(length + arr2.length);
+  array<T> *arr3 = new array<T>(length + arr2.length);
 
   while(i < length && j < arr2.length){
       if(arr[i] < arr2.arr[j])
@@ -284,11 +303,12 @@ array * array::merge(array arr2){
 /*
  * union 2 arrays without duplicates
 */
-array *array::unionArr(array arr2){
+template <class T>
+array<T> *array<T>::unionArr(array arr2){
   int i, j, k;
   i = j = k = 0;
 
-  array *arr3 = new array(length + arr2.length);
+  array<T> *arr3 = new array<T>(length + arr2.length);
 
   while(i < length && j < arr2.length){
       if(arr[i] < arr2.arr[j])
@@ -314,11 +334,12 @@ array *array::unionArr(array arr2){
 /*
  * only copies the intersectiong elements (only the same value elements)
 */
-array * array::intersection(array arr2){
+template <class T>
+array<T> * array<T>::intersection(array arr2){
   int i, j, k;
   i = j = k = 0;
 
-  array *arr3 = new array(length + arr2.length);
+  array<T> *arr3 = new array<T>(length + arr2.length);
 
   while(i < length && j < arr2.length){
       if(arr[i] < arr2.arr[j])
@@ -338,11 +359,12 @@ array * array::intersection(array arr2){
 /*
  * only different values
 */
-array * array::difference( array arr2){
+template <class T>
+array<T> * array<T>::difference( array arr2){
   int i, j, k;
   i = j = k = 0;
 
-  array *arr3 = new array(length + arr2.length);
+  array<T> *arr3 = new array<T>(length + arr2.length);
 
   while(i < length && j < arr2.length){
       if(arr[i] < arr2.arr[j])
@@ -371,7 +393,7 @@ int main(){
   printf("Enter size of array:");
   scanf("%d", &size);
 
-  array arr1(size);
+  array<int> arr1(size);
 
   do{
     printf("\n-- Menu --\n");
