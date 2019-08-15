@@ -10,6 +10,17 @@ LowerTriangularMatrix::LowerTriangularMatrix(int n) : Matrix(){
   array = new int[n*(n+1)/2];
 }
 
+void LowerTriangularMatrix::create(){
+  int x;
+  for(int i = 1; i <= n; i++){
+      for(int j = 1; j <= n; j++){
+          cin >> x;
+          if(i >= j)
+            array[i * (i - 1) / 2 + j - 1] = x;
+        }
+    }
+}
+
 void LowerTriangularMatrix::set(int i, int j, int x){
   if(i >= j)
     array[i*(i-1)/2 + j-1] = x;

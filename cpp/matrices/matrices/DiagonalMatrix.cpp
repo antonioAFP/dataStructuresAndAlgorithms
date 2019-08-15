@@ -5,6 +5,17 @@ DiagonalMatrix::DiagonalMatrix(int n) : Matrix(){
   array = new int[n];
 }
 
+void DiagonalMatrix::create(){
+  int x;
+  for(int i = 1; i <= n; i++){
+      for(int j = 1; j <= n; j++){
+          cin >> x;
+          if(i == j)
+            array[i - 1] = x;
+        }
+    }
+}
+
 void DiagonalMatrix::set(int i, int j, int x){
   if(i == j)
     array[i -1] = x;

@@ -17,9 +17,10 @@ class DiagonalMatrix : Matrix
 {
 public:
   DiagonalMatrix(int n);
-  virtual void set(int i, int j, int x);
-  virtual int get(int i, int j);
-  virtual void display();
+  void create();
+  void set(int i, int j, int x);
+  int get(int i, int j);
+  void display();
   ~DiagonalMatrix();
 };
 

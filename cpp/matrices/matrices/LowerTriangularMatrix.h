@@ -19,6 +19,7 @@ public:
   LowerTriangularMatrix();
   LowerTriangularMatrix(int n);
 
+  void create();
   void set(int i, int j, int x);
   int get(int i, int j);
   void display();
