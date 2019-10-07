@@ -12,6 +12,7 @@ protected:
 
 public:
   Matrix();
+  virtual void create() = 0;
   virtual void set(int i, int j, int x) = 0;
   virtual int get(int i, int j) = 0;
   virtual void display() = 0;
