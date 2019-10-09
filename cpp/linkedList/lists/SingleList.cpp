@@ -11,7 +11,6 @@ SingleList::SingleList()
 
 void SingleList::add(int data, SingleNode *next){
   SingleNode *node = new SingleNode(data, next);
-  //SingleNode *tmp = current;
 
   if(!first){
       first = node;

@@ -3,7 +3,7 @@
 SingleNode::SingleNode()
 {
   data = 0;
-  next = 0;
+  next = nullptr;
 }
 
 SingleNode::SingleNode(int newValue, SingleNode* newNext){

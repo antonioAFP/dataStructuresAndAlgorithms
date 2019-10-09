@@ -27,12 +27,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         Lists.cpp \
         SingleList.cpp \
-        SingleNode.cpp
+        SingleList2.cpp \
+        SingleNode.cpp \
+        SingleNode2.cpp
 
 HEADERS += \
         Lists.h \
         SingleList.h \
+        SingleList2.h \
         SingleNode.h \
+        SingleNode2.h \
         lists_global.h 
 
 unix {
