@@ -19,7 +19,12 @@ int main(int argc, char *argv[])
   singleList.add(1);
   singleList.add(2);
   singleList.add(3);
-  singleList.display();
+  //singleList.display();
+  singleList.displayReverse(singleList.getFirst());
+
+  //qDebug() << "Count: " << singleList.count();
+  //qDebug() << "Count: " << singleList.count(singleList.getFirst());
+
 
   /*singleList2.add(0);
   singleList2.add(1);
