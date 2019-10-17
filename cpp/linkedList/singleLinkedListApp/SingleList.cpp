@@ -37,15 +37,16 @@ void SingleList::display(){
 
 void SingleList::display(SingleNode *node){
   if(node != nullptr){
-      cout << " " << node->getData();
+      cout << node->getData() << " ";
       display(node->getNext());
     }
+  cout << endl;
 }
 
 void SingleList::displayReverse(SingleNode *node){
   if(node != nullptr){
       displayReverse(node->getNext());
-      cout << " " << node->getData();
+      cout << node->getData() << " ";
     }
 }
 

@@ -17,9 +17,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+    SingleList.cpp \
+    SingleNode.cpp
 
-MYDLLDIR = $$(ALGODIR)\dllLists
+HEADERS += \
+    SingleList.h \
+    SingleNode.h
+
+#MYDLLDIR = $$(ALGODIR)\dllLists
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -31,21 +37,23 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 # As our header files are in the same directory, we can make Qt Creator find it
 # by specifying it as INCLUDEPATH.
-INCLUDEPATH += $$MYDLLDIR
+#INCLUDEPATH += $$MYDLLDIR
 
 # Dependency to library domain (libdomain.so for Unices or domain.dll on Win32)
 # Repeat this for more libraries if needed.
-win32:LIBS += $$quote($$MYDLLDIR\lists.dll)
- unix:LIBS += $$quote(-L$$MYDLLDIR) -llists
+#win32:LIBS += $$quote($$MYDLLDIR\lists.dll)
+# unix:LIBS += $$quote(-L$$MYDLLDIR) -llists
 
-message(The project will read in $$quote($$MYDLLDIR\lists.dll))
-
-
+#message(The project will read in $$quote($$MYDLLDIR\lists.dll))
 
 
-DDIR = \"$$MYDLLDIR/\"
-SDIR = \"$$IN_PWD/\"
+
+
+#DDIR = \"$$MYDLLDIR/\"
+#SDIR = \"$$IN_PWD/\"
 # Replace slashes in paths with backslashes for Windows
-win32:SDIR ~= s,/,\\,g
+#win32:SDIR ~= s,/,\\,g
 # For-loop to copy all header files to DDIR.
-QMAKE_POST_LINK += $$QMAKE_COPY $$quote($$MYDLLDIR\lists.dll) $$quote($$SDIR) $$escape_expand(\\n\\t)
+#QMAKE_POST_LINK += $$QMAKE_COPY $$quote($$MYDLLDIR\lists.dll) $$quote($$SDIR) $$escape_expand(\\n\\t)
+
+

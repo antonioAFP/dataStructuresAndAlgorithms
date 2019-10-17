@@ -1,7 +1,7 @@
 #include <QCoreApplication>
 #include <QDebug>
 
-#include "Lists.h"
+//#include "Lists.h"
 #include "SingleList.h"
 //#include "SingleList2.h"
 
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
   qDebug() << "Hello Darkness, my old friend :D";
 
-  Lists list;
+  //Lists list;
   SingleList singleList;
   //SingleList2<int> singleList2;
 
@@ -19,18 +19,12 @@ int main(int argc, char *argv[])
   singleList.add(1);
   singleList.add(2);
   singleList.add(3);
-  //singleList.display();
+  singleList.display();
+  singleList.display();
   singleList.displayReverse(singleList.getFirst());
 
-  //qDebug() << "Count: " << singleList.count();
-  //qDebug() << "Count: " << singleList.count(singleList.getFirst());
-
-
-  /*singleList2.add(0);
-  singleList2.add(1);
-  singleList2.add(2);
-  singleList2.add(3);
-  singleList2.display();*/
+  qDebug() << "Count: " << singleList.count();
+  qDebug() << "Count: " << singleList.count(singleList.getFirst());
 
   qDebug() << "Good bye";
 
