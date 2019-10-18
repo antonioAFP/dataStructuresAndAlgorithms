@@ -75,3 +75,15 @@ int SingleList::sum(SingleNode *node){
     }
   return result;
 }
+
+int SingleList::max(SingleNode *node){
+  SingleNode *tmpNode = node;
+  int max = -32768;
+  while (tmpNode) {
+      if(tmpNode->getData() > max)
+        max = tmpNode->getData();
+
+      tmpNode = tmpNode->getNext();
+    }
+  return max;
+}

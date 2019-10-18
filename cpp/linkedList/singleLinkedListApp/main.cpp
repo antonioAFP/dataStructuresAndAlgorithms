@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
 
   qDebug() << "Count: " << singleList.count();
   qDebug() << "Count: " << singleList.count(singleList.getFirst());
+  qDebug() << "Sum: " << singleList.sum(singleList.getFirst());
+  qDebug() << "Max: " << singleList.max(singleList.getFirst());
 
   qDebug() << "Good bye";
 

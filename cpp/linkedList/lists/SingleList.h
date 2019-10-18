@@ -17,6 +17,7 @@ public:
   int count();
   int count(SingleNode *p);
   int sum(SingleNode *p);
+  int max(SingleNode *p);
 
 private:
   SingleNode *first;
