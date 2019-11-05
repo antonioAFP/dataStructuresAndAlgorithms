@@ -88,7 +88,6 @@ int SingleList::max(SingleNode *node){
   return max;
 }
 
-
 SingleNode *SingleList::linearSearch(SingleNode *p, int key){
   while(p){
       if(p->getData() == key)
@@ -97,3 +96,43 @@ SingleNode *SingleList::linearSearch(SingleNode *p, int key){
     }
   return nullptr;
 }
+
+SingleNode *SingleList::improvedLinearSearch(SingleNode *p, int key){
+  SingleNode *q = nullptr;
+
+  while(p){
+      if(p->getData() == key){
+          q->setNext(p->getNext());
+          p->setNext(first);
+          first = p;
+          return p;
+        }
+      q = p;
+      p = p->getNext();
+    }
+  return nullptr;
+}
+
+void SingleList::insert(int pos, int value){
+  SingleNode *t, *p;
+
+  if(pos == 0){
+      t = new SingleNode(value);
+      t->setNext(first);
+      first = t;
+    }else if(pos > 0){
+      p = first;
+
+      for(int i = 0; i < pos -1; i++){
+          p = p->getNext();
+        }
+
+      if(p){
+          t = new SingleNode(value);
+          t->setNext(p->getNext());
+          p->setNext(t);
+        }
+
+    }
+}
+

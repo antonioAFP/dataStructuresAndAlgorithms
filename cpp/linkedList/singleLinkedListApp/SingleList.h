@@ -18,6 +18,9 @@ public:
   int sum(SingleNode *p);
   int max(SingleNode *p);
   SingleNode *linearSearch(SingleNode *p, int key);
+  SingleNode *improvedLinearSearch(SingleNode *p, int key);
+  void insert(int pos, int value);
+
 
 
 
