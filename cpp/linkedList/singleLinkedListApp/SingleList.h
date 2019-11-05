@@ -17,6 +17,8 @@ public:
   int count(SingleNode *p);
   int sum(SingleNode *p);
   int max(SingleNode *p);
+  SingleNode *linearSearch(SingleNode *p, int key);
+
 
 
 private:

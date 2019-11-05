@@ -74,3 +74,13 @@ int SingleList::sum(SingleNode *node){
     }
   return result;
 }
+
+
+SingleNode *SingleList::linearSearch(SingleNode *p, int key){
+  while(p){
+      if(p->getData() == key)
+        return p;
+      p = p->getNext();
+    }
+  return nullptr;
+}

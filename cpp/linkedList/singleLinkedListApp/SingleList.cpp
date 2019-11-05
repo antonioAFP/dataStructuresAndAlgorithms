@@ -87,3 +87,13 @@ int SingleList::max(SingleNode *node){
     }
   return max;
 }
+
+
+SingleNode *SingleList::linearSearch(SingleNode *p, int key){
+  while(p){
+      if(p->getData() == key)
+        return p;
+      p = p->getNext();
+    }
+  return nullptr;
+}

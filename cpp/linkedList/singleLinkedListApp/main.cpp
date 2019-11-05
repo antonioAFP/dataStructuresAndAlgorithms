@@ -28,6 +28,11 @@ int main(int argc, char *argv[])
   qDebug() << "Sum: " << singleList.sum(singleList.getFirst());
   qDebug() << "Max: " << singleList.max(singleList.getFirst());
 
+  if(singleList.linearSearch(singleList.getFirst(), 3))
+    qDebug() << "key exist on list";
+  else
+    qDebug() << "key doesn´t exists";
+
   qDebug() << "Good bye";
 
 
