@@ -6,6 +6,7 @@ using namespace std;
 SingleList::SingleList()
 {
   first = nullptr;
+  last = nullptr;
   current = nullptr;
 }
 
@@ -133,6 +134,44 @@ void SingleList::insert(int pos, int value){
           p->setNext(t);
         }
 
+    }
+}
+
+void SingleList::insertLast(int value){
+  SingleNode *node = new SingleNode(value);
+
+  if(!first){
+      last = node;
+      first = node;
+    }else{
+      last->setNext(node);
+      last = node;
+    }
+}
+
+void SingleList::sortedInsert(int value){
+  SingleNode *p = first;
+  SingleNode *q = nullptr;
+
+  SingleNode *node = new SingleNode(value);
+
+  if(!first){
+    first = node;
+    last = node;
+    }else{
+
+      while(p && p->getData() < value){
+          q = p;
+          p->setNext(p->getNext());
+        }
+
+      if(p == first){
+          node->setNext(first);
+          first = node;
+        }else{
+          node->setNext(q->getNext());
+          q->setNext(node);
+        }
     }
 }
 

@@ -46,6 +46,25 @@ int main(int argc, char *argv[])
   singleList.insert(4, 6);
   singleList.display();
 
+  qDebug() << "\n------------------\n";
+
+  SingleList sample2;
+  sample2.insertLast(0);
+  sample2.insertLast(1);
+  sample2.insertLast(2);
+  sample2.display();
+  qDebug() << "\n------------------\n";
+
+  SingleList sorted;
+  sorted.sortedInsert(0);
+  sorted.sortedInsert(10);
+  //sorted.sortedInsert(20);
+  //sorted.sortedInsert(30);
+  sorted.display();
+  //sorted.sortedInsert(15);
+  //sorted.display();
+  qDebug() << "\n------------------\n";
+
 
 
 

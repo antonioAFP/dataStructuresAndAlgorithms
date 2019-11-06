@@ -20,12 +20,14 @@ public:
   SingleNode *linearSearch(SingleNode *p, int key);
   SingleNode *improvedLinearSearch(SingleNode *p, int key);
   void insert(int pos, int value);
+  void insertLast(int value);
+  void sortedInsert(int value);
 
 
 
 
 private:
-  SingleNode *first;
+  SingleNode *first, *last;
   SingleNode *current;
 };
 
