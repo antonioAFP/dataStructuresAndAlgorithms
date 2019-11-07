@@ -7,6 +7,7 @@ class SingleList
 {
 public:
   SingleList();
+  ~SingleList();
 
   SingleNode *getFirst() const;
   void add(int data, SingleNode *next = 0);

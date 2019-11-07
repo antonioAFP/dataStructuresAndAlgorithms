@@ -55,14 +55,15 @@ int main(int argc, char *argv[])
   sample2.display();
   qDebug() << "\n------------------\n";
 
-  SingleList sorted;
-  sorted.sortedInsert(0);
-  sorted.sortedInsert(10);
-  sorted.sortedInsert(20);
-  sorted.sortedInsert(30);
-  sorted.display();
-  sorted.sortedInsert(15);
-  sorted.display();
+  SingleList *sorted = new SingleList();
+  sorted->sortedInsert(0);
+  sorted->sortedInsert(10);
+  sorted->sortedInsert(20);
+  sorted->sortedInsert(30);
+  sorted->display();
+  sorted->sortedInsert(15);
+  sorted->display();
+  delete sorted;
 
   qDebug() << "\n------------------\n";
 

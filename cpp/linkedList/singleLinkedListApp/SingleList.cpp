@@ -10,6 +10,17 @@ SingleList::SingleList()
   current = nullptr;
 }
 
+SingleList::~SingleList(){
+  SingleNode *node = first;
+  while (node) {
+      cout << "Deleting: " << node->getData() << endl;
+      SingleNode *tmp = node->getNext();
+      delete node;
+      node = tmp;
+    }
+  //cout << endl;
+}
+
 SingleNode *SingleList::getFirst() const{
   return first;
 }
