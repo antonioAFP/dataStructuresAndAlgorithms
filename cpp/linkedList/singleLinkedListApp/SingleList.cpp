@@ -157,12 +157,11 @@ void SingleList::sortedInsert(int value){
 
   if(!first){
     first = node;
-    last = node;
     }else{
 
       while(p && p->getData() < value){
           q = p;
-          p->setNext(p->getNext());
+          p = p->getNext();
         }
 
       if(p == first){
@@ -173,5 +172,6 @@ void SingleList::sortedInsert(int value){
           q->setNext(node);
         }
     }
+  last = node;
 }
 
