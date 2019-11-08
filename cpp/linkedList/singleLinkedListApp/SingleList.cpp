@@ -184,3 +184,59 @@ void SingleList::sortedInsert(int value){
   last = node;
 }
 
+int SingleList::deleteNode(int index){
+  SingleNode *q = nullptr;
+  SingleNode *p = first;
+  int x = -1;
+
+  if(index < 1 || index > count())
+    return x;  //out of bounds
+
+  if(index == 1){
+    q = first;
+    x = q->getData();
+    first = first->getNext();
+    delete q;
+    return x;
+    }else{
+      for(int i = 0; i < index -1; i++){
+          q = p;
+          p = p->getNext();
+        }
+      q->setNext(p->getNext());
+      x = p->getData();
+      delete p;
+      return x;
+    }
+}
+
+bool SingleList::isSorted(){
+  int x = -32768; //minimun int value for INT 2 bytes
+  SingleNode *p = first;
+
+  while(p){
+      if(p->getData() < x)
+        return false;
+
+      x = p->getData();
+      p = p->getNext();
+    }
+
+  return x;
+}
+
+void SingleList::removeDuplicates(){
+  SingleNode *p = first;
+  SingleNode *q = first->getNext();
+
+  while (q) {
+      if(p->getData() != q->getData()){
+          p = q;
+          q = q->getNext();
+        }else{
+          p->setNext(q->getNext());
+          delete q;
+          q = p->getNext();
+        }
+    }
+}

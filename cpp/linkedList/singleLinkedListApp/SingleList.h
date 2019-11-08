@@ -23,6 +23,9 @@ public:
   void insert(int pos, int value);
   void insertLast(int value);
   void sortedInsert(int value);
+  int deleteNode(int index);
+  bool isSorted();
+  void removeDuplicates();
 
 
 

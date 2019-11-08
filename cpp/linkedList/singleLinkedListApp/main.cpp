@@ -1,9 +1,7 @@
 #include <QCoreApplication>
 #include <QDebug>
 
-//#include "Lists.h"
 #include "SingleList.h"
-//#include "SingleList2.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,10 +9,7 @@ int main(int argc, char *argv[])
 
   qDebug() << "Hello Darkness, my old friend :D";
 
-  //Lists list;
   SingleList singleList;
-  //SingleList2<int> singleList2;
-
   singleList.add(0);
   singleList.add(1);
   singleList.add(2);
@@ -64,10 +59,37 @@ int main(int argc, char *argv[])
   sorted->sortedInsert(15);
   sorted->display();
   delete sorted;
-
   qDebug() << "\n------------------\n";
 
+  SingleList *testDelete = new SingleList();
+  testDelete->sortedInsert(0);
+  testDelete->sortedInsert(10);
+  testDelete->sortedInsert(20);
+  testDelete->sortedInsert(30);
+  testDelete->sortedInsert(15);
+  testDelete->display();
+  qDebug() << " Deleted element: " << testDelete->deleteNode(4);
+  testDelete->display();
+  qDebug() << "\n------------------\n";
+  qDebug() << "Is Sorted? " << testDelete->isSorted();
+  testDelete->insert(1,-1);
+  testDelete->display();
+  qDebug() << "Is Sorted? " << testDelete->isSorted();
+  delete testDelete;
+  qDebug() << "\n------------------\n";
 
+  SingleList duplicates;
+  duplicates.add(3);
+  duplicates.add(5);
+  duplicates.add(5);
+  duplicates.add(8);
+  duplicates.add(8);
+  duplicates.add(8);
+  duplicates.display();
+  duplicates.removeDuplicates();
+  qDebug() << "Without duplicates:  ";
+  duplicates.display();
+  qDebug() << "\n------------------\n";
 
 
   qDebug() << "Good bye";
