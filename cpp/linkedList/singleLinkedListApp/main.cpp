@@ -85,9 +85,15 @@ int main(int argc, char *argv[])
   duplicates.add(8);
   duplicates.add(8);
   duplicates.add(8);
+  duplicates.add(9);
+  duplicates.add(10);
   duplicates.display();
   duplicates.removeDuplicates();
   qDebug() << "Without duplicates:  ";
+  duplicates.display();
+  qDebug() << "\n------------------\n";
+  qDebug() << "Reversed list:";
+  duplicates.reverse();
   duplicates.display();
   qDebug() << "\n------------------\n";
 

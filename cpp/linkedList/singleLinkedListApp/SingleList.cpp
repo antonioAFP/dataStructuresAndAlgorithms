@@ -240,3 +240,23 @@ void SingleList::removeDuplicates(){
         }
     }
 }
+
+void SingleList::reverse(){
+  SingleNode *p = first;
+  int nodes[count()];
+  int i = 0;
+
+  while (p) {
+      nodes[i] = p->getData();
+      p = p->getNext();
+      i++;
+    }
+
+  p = first;
+  i--;
+
+  while (p) {
+      p->setData(nodes[i--]);
+      p = p->getNext();
+    }
+}

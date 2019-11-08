@@ -26,6 +26,7 @@ public:
   int deleteNode(int index);
   bool isSorted();
   void removeDuplicates();
+  void reverse();
 
 
 
