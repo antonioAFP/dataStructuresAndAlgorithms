@@ -260,3 +260,26 @@ void SingleList::reverse(){
       p = p->getNext();
     }
 }
+
+void SingleList::reverseSlicing(){
+  SingleNode *p = first;
+  SingleNode *q = nullptr;
+  SingleNode *r = nullptr;
+
+  while(p){
+      r = q;
+      q = p;
+      p = p->getNext();
+      q->setNext(r); //reverse link
+    }
+
+  first = q;
+}
+
+void SingleList::concat(SingleNode *list){
+  SingleNode *p = first;
+  while(p->getNext())
+    p = p->getNext();
+
+  p->setNext(list);
+}

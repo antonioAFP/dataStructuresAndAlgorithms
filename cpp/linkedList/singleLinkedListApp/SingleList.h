@@ -27,6 +27,8 @@ public:
   bool isSorted();
   void removeDuplicates();
   void reverse();
+  void reverseSlicing();
+  void concat(SingleNode *list);
 
 
 

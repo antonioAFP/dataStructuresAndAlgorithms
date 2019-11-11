@@ -95,8 +95,25 @@ int main(int argc, char *argv[])
   qDebug() << "Reversed list:";
   duplicates.reverse();
   duplicates.display();
+  qDebug() << "Reversed Slicing list:";
+  duplicates.reverseSlicing();
+  duplicates.display();
   qDebug() << "\n------------------\n";
-
+  SingleList concat1;
+  concat1.add(0);
+  concat1.add(1);
+  concat1.add(2);
+  concat1.add(3);
+  SingleList concat2;
+  concat2.add(4);
+  concat2.add(5);
+  concat2.add(6);
+  concat2.add(7);
+  concat1.display();
+  concat2.display();
+  concat1.concat(concat2.getFirst());
+  concat1.display();
+  qDebug() << "\n------------------\n";
 
   qDebug() << "Good bye";
 
