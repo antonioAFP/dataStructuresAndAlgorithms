@@ -8,7 +8,18 @@ CircuarList::CircuarList()
   head = nullptr;
 }
 
-CircuarList::~CircuarList(){}
+CircuarList::~CircuarList(){
+  SingleNode *p = head;
+
+  if(!p)
+    return;
+
+  do{
+      SingleNode *tmp = p->getNext();
+      delete tmp;
+      p = p->getNext();
+    }while(p != head);
+}
 
 void CircuarList::display(){
   SingleNode *p = head;
@@ -72,4 +83,41 @@ void CircuarList::insert(int pos, int value){
       t->setNext(p->getNext());
       p->setNext(t);
     }
+}
+
+int CircuarList::deleteNode(int index){
+  SingleNode *p;
+  SingleNode *q;
+  int x = -1;
+
+  if(index < 0 || index > length())
+    return -1;
+
+  if(index == 1){
+      p = head;
+      while(p->getNext() != head){
+          p = p->getNext();
+        }
+      x = head->getData();
+
+      if(p == head){
+          delete head;
+          head = nullptr;
+        }else {
+          p->setNext(head->getNext());
+          delete head;
+          head = p->getNext();
+        }
+    }else {
+      p = head;
+      for (int i = 0;i < index -2; i++) {
+          p = p->getNext();
+        }
+      q = p->getNext();
+      p->setNext(q->getNext());
+      x = q->getData();
+      delete q;
+    }
+
+  return x;
 }

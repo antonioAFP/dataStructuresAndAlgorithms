@@ -12,6 +12,7 @@ public:
   void display();
   int length();
   void insert(int pos, int value);
+  int deleteNode(int index);
 
 private:
   SingleNode *head;
