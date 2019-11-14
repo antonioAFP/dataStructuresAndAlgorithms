@@ -29,6 +29,7 @@ public:
   void reverse();
   void reverseSlicing();
   void concat(SingleNode *list);
+  int isLoop(SingleNode *f);
 
 
 

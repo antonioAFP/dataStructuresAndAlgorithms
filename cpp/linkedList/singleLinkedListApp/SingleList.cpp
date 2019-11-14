@@ -283,3 +283,23 @@ void SingleList::concat(SingleNode *list){
 
   p->setNext(list);
 }
+
+int SingleList::isLoop(SingleNode *f){
+  SingleNode *p = nullptr;
+  SingleNode *q = nullptr;
+
+  p = f;
+  q = f;
+
+  do{
+      p = p->getNext();
+      q = q->getNext();
+      q = q ? q->getNext() : q;
+    }while(p && q && p != q);
+
+  if(p == q)
+    return 1;
+  else {
+      return 0;
+    }
+}
