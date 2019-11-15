@@ -10,7 +10,7 @@ DLinkedNode::DLinkedNode(int value, DLinkedNode *prev, DLinkedNode *nex){
   previous = prev;
   next = nex;
 }
-
+/*
 int DLinkedNode::getData(){
   return data;
 }
@@ -33,3 +33,4 @@ DLinkedNode *DLinkedNode::getNext(){
 void DLinkedNode::setNext(DLinkedNode *newNext){
   next = newNext;
 }
+*/
