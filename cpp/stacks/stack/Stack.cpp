@@ -6,7 +6,7 @@ using namespace std;
 
 Stack::Stack()
 {
-
+  top = nullptr;
 }
 
 void Stack::display(){
