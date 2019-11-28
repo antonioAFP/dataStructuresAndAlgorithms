@@ -9,6 +9,7 @@ public:
   BinaryNode(int value, BinaryNode *parent = nullptr,
              BinaryNode *left = nullptr, BinaryNode *rigth = nullptr);
 
+  int data;
   BinaryNode *parent;
   BinaryNode *left;
   BinaryNode *rigth;

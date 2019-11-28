@@ -9,11 +9,11 @@ public:
   BinaryTree();
 
   void create();
-  void preOrder();
-  void postOrder();
-  void inOrder();
-  void levelOrder();
-  int height();
+  void preOrder(BinaryNode *node);
+  void postOrder(BinaryNode *node);
+  void inOrder(BinaryNode *node);
+  void levelOrder(BinaryNode *node);
+  int height(BinaryNode *node);
 
   BinaryNode *root;
 };

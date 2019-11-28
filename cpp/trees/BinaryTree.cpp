@@ -28,16 +28,16 @@ void BinaryTree::create(){
 
   queue.enqueue(root);
 
-  while(!queue.isFull()){
+  while(!queue.isEmpty()){
       p = queue.dequeue();
-      cout << "Enter Left child";
+      cout << "Enter Left child: ";
       cin >> x;
       if(x != -1){
           t = new BinaryNode(x);
           p->left = t;
           queue.enqueue(t);
         }
-      cout << "Enter Rigth child";
+      cout << "Enter Rigth child: ";
       cin >> x;
       if(x != -1){
           t = new BinaryNode(x);
@@ -45,6 +45,13 @@ void BinaryTree::create(){
           queue.enqueue(t);
         }
     }
+}
 
+void BinaryTree::preOrder(BinaryNode *node){
+  if(node){
+      cout << node->data;
+      preOrder(node->left);
+      preOrder(node->rigth);
+    }
 
 }
