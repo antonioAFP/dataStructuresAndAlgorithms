@@ -16,7 +16,7 @@ void BinaryTree::create(){
   int x;
   Queue queue;
 
-  cout << "Enter roo value: ";
+  cout << "Enter root value: ";
   cin >> x;
 
   root = new BinaryNode(x);
@@ -30,14 +30,14 @@ void BinaryTree::create(){
 
   while(!queue.isEmpty()){
       p = queue.dequeue();
-      cout << "Enter Left child: ";
+      cout << "Enter Left child of " << p->data << ": ";
       cin >> x;
       if(x != -1){
           t = new BinaryNode(x);
           p->left = t;
           queue.enqueue(t);
         }
-      cout << "Enter Rigth child: ";
+      cout << "Enter Rigth child of " << p->data << ": ";
       cin >> x;
       if(x != -1){
           t = new BinaryNode(x);
@@ -49,9 +49,70 @@ void BinaryTree::create(){
 
 void BinaryTree::preOrder(BinaryNode *node){
   if(node){
-      cout << node->data;
+      cout << node->data << " ";
       preOrder(node->left);
       preOrder(node->rigth);
     }
+}
 
+void BinaryTree::inOrder(BinaryNode *node){
+  if(node){
+      inOrder(node->left);
+      cout << node->data << " ";
+      inOrder(node->rigth);
+    }
+}
+
+void BinaryTree::postOrder(BinaryNode *node){
+  if(node){
+      postOrder(node->left);
+      postOrder(node->rigth);
+      cout << node->data << " ";
+    }
+}
+
+void BinaryTree::levelOrder(BinaryNode *node){
+  Queue queue;
+
+  if(!node)
+    return;
+
+  cout << node->data << " ";
+  queue.enqueue(node);
+
+  while(!queue.isEmpty()){
+      node = queue.dequeue();
+
+      if(node->left){
+          cout << node->left->data << " ";
+          queue.enqueue(node->left);
+        }
+      if(node->rigth){
+          cout << node->rigth->data << " ";
+          queue.enqueue(node->rigth);
+        }
+    }
+}
+
+int BinaryTree::count(BinaryNode *node){
+  if(node)
+    return count(node->left) + count(node->rigth) + 1;
+
+  return 0;
+}
+
+int BinaryTree::height(BinaryNode *node){
+  int x = 0;
+  int y = 0;
+
+  if(!node)
+    return 0;
+
+  x = height(node->left);
+  y = height(node->rigth);
+
+  if(x > y)
+    return x + 1;
+  else
+    return y + 1;
 }
