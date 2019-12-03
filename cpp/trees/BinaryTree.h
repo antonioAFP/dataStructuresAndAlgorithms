@@ -15,6 +15,7 @@ public:
   void levelOrder(BinaryNode *node);
   int count(BinaryNode *node);
   int height(BinaryNode *node);
+  int leafsCount(BinaryNode *node);
 
   BinaryNode *root;
 };

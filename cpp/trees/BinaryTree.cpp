@@ -116,3 +116,19 @@ int BinaryTree::height(BinaryNode *node){
   else
     return y + 1;
 }
+
+int BinaryTree::leafsCount(BinaryNode *node){
+  int x = 0;
+  int y = 0;
+
+  if(!node)
+    return 0;
+
+  x = height(node->left);
+  y = height(node->rigth);
+
+  if(!node->left && !node->rigth)
+    return x + y + 1;
+  else
+    return x + y;
+}
