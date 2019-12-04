@@ -8,7 +8,7 @@ class BinaryTree
 public:
   BinaryTree();
 
-  void create();
+
   void preOrder(BinaryNode *node);
   void postOrder(BinaryNode *node);
   void inOrder(BinaryNode *node);
@@ -16,6 +16,7 @@ public:
   int count(BinaryNode *node);
   int height(BinaryNode *node);
   int leafsCount(BinaryNode *node);
+  void create();
 
   BinaryNode *root;
 };

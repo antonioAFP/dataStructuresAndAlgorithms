@@ -6,11 +6,10 @@ class BinaryNode
 {
 public:
   BinaryNode();
-  BinaryNode(int value, BinaryNode *parent = nullptr,
+  BinaryNode(int value,
              BinaryNode *left = nullptr, BinaryNode *rigth = nullptr);
 
   int data;
-  BinaryNode *parent;
   BinaryNode *left;
   BinaryNode *rigth;
 };

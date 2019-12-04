@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         BinaryNode.cpp \
+        BinarySearchTree.cpp \
         BinaryTree.cpp \
         Queue.cpp \
         SingleNode.cpp \
@@ -28,6 +29,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
   BinaryNode.h \
+  BinarySearchTree.h \
   BinaryTree.h \
   Queue.h \
   SingleNode.h

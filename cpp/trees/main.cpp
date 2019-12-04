@@ -1,5 +1,6 @@
 #include <QCoreApplication>
 #include "BinaryTree.h"
+#include "BinarySearchTree.h"
 #include <QDebug>
 
 int main(int argc, char *argv[])
@@ -7,7 +8,7 @@ int main(int argc, char *argv[])
   QCoreApplication a(argc, argv);
 
   BinaryTree tree;
-
+  /*
   tree.create();
   qDebug() << "\nPreOrder: ";
   tree.preOrder(tree.root);
@@ -17,8 +18,17 @@ int main(int argc, char *argv[])
   tree.inOrder(tree.root);
   qDebug() << "\nLeverOrder: ";
   tree.levelOrder(tree.root);
-  qDebug() << "\nNodes: " <<  tree.count(tree.root);
-  qDebug() << "\nHeight: " << tree.height(tree.root);
+  qDebug() << "Nodes: " <<  tree.count(tree.root);
+  qDebug() << "Height: " << tree.height(tree.root);
+  */
+
+  BinarySearchTree bst;
+  bst.insert(10);
+  bst.insert(5);
+  bst.insert(15);
+  bst.insert(3);
+  qDebug() << "BST inOrder: ";
+  bst.inOrder(bst.root);
 
   return a.exec();
 }
