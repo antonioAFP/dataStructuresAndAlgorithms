@@ -20,6 +20,7 @@ SOURCES += \
         BinaryTree.cpp \
         Queue.cpp \
         SingleNode.cpp \
+        Stack.cpp \
         main.cpp
 
 # Default rules for deployment.
@@ -32,4 +33,5 @@ HEADERS += \
   BinarySearchTree.h \
   BinaryTree.h \
   Queue.h \
-  SingleNode.h
+  SingleNode.h \
+  Stack.h

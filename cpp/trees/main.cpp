@@ -1,6 +1,7 @@
 #include <QCoreApplication>
 #include "BinaryTree.h"
 #include "BinarySearchTree.h"
+#include "BinaryNode.h"
 #include <QDebug>
 
 int main(int argc, char *argv[])
@@ -25,10 +26,35 @@ int main(int argc, char *argv[])
   BinarySearchTree bst;
   bst.insert(10);
   bst.insert(5);
-  bst.insert(15);
-  bst.insert(3);
+  bst.insert(20);
+  bst.insert(8);
+  bst.insert(30);
   qDebug() << "BST inOrder: ";
   bst.inOrder(bst.root);
+  qDebug() << "Deleting: 20";
+  bst.deleteNode(bst.root, 20);
+  qDebug() << "BST inOrder: ";
+  bst.inOrder(bst.root);
+  BinaryNode *tmp = bst.search(20);
+  if(tmp)
+    qDebug() << "\nElement: " << tmp->data << " found";
+  else
+    qDebug() << "\nElement NOT found";
+
+  BinarySearchTree bstRecursive;
+  bstRecursive.root = bstRecursive.insertRecursive(bstRecursive.root, 10); //only the first insertion
+  bstRecursive.insertRecursive(bstRecursive.root, 5);
+  bstRecursive.insertRecursive(bstRecursive.root, 15);
+  bstRecursive.insertRecursive(bstRecursive.root, 3);
+  bstRecursive.insertRecursive(bstRecursive.root, 10);
+  qDebug() << "bstRecursive inOrder: ";
+  bstRecursive.inOrder(bstRecursive.root);
+
+  BinarySearchTree bstCreate;
+  int preOrderArr[6] = {0,1,2,3,4,5};
+  bstCreate.createFromPreorder(preOrderArr, 6);
+  qDebug() << "BST createFromPreorder: ";
+  bstCreate.inOrder(bst.root);
 
   return a.exec();
 }

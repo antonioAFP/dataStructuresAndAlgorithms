@@ -10,6 +10,12 @@ public:
 
   void create();
   void insert(int key);
+  BinaryNode * search(int key);
+  BinaryNode * insertRecursive(BinaryNode *node, int key);
+  BinaryNode * inPredecesor(BinaryNode *node);
+  BinaryNode * inSuccessor(BinaryNode *node);
+  BinaryNode * deleteNode(BinaryNode *node, int key);
+  void createFromPreorder(int *preorderArr, int n);
 
 };
 
