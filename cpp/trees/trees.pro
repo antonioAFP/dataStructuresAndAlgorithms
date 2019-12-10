@@ -15,6 +15,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        AvlNode.cpp \
+        AvlQueue.cpp \
+        AvlSingleNode.cpp \
+        AvlTree.cpp \
         BinaryNode.cpp \
         BinarySearchTree.cpp \
         BinaryTree.cpp \
@@ -29,6 +33,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+  AvlNode.h \
+  AvlQueue.h \
+  AvlSingleNode.h \
+  AvlTree.h \
   BinaryNode.h \
   BinarySearchTree.h \
   BinaryTree.h \
