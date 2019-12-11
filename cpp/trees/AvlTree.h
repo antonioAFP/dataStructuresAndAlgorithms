@@ -27,6 +27,10 @@ public:
   //avl mothods
   int nodeHeight(AvlNode *node);
   int balanceFactor(AvlNode *node);
+  AvlNode * llRotation(AvlNode *node);
+  AvlNode * lrRotation(AvlNode *node);
+  AvlNode * rrRotation(AvlNode *node);
+  AvlNode * rlRotation(AvlNode *node);
 
   AvlNode *root;
 };

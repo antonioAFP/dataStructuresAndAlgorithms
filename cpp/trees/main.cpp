@@ -2,6 +2,7 @@
 #include "BinaryTree.h"
 #include "BinarySearchTree.h"
 #include "BinaryNode.h"
+#include "AvlTree.h"
 #include <QDebug>
 
 int main(int argc, char *argv[])
@@ -50,11 +51,21 @@ int main(int argc, char *argv[])
   qDebug() << "bstRecursive inOrder: ";
   bstRecursive.inOrder(bstRecursive.root);
 
-  BinarySearchTree bstCreate;
+  /*BinarySearchTree bstCreate;
   int preOrderArr[6] = {0,1,2,3,4,5};
   bstCreate.createFromPreorder(preOrderArr, 6);
   qDebug() << "BST createFromPreorder: ";
   bstCreate.inOrder(bst.root);
+  */
+
+  AvlTree avl;
+  avl.root = avl.insert(avl.root, 10);
+  avl.insert(avl.root, 20);
+  avl.insert(avl.root, 25);
+  avl.insert(avl.root, 28);
+  avl.insert(avl.root, 27);
+  avl.insert(avl.root, 5);
+
 
   return a.exec();
 }

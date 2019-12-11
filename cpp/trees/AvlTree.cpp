@@ -5,6 +5,10 @@
 
 using namespace std;
 
+AvlTree::AvlTree(){
+  root = nullptr;
+}
+
 void AvlTree::preOrder(AvlNode *node){
   if(node){
       cout << node->data << " ";
@@ -91,36 +95,6 @@ int AvlTree::leafsCount(AvlNode *node){
     return x + y;
 }
 
-/*void AvlTree::insert(int key){
-  AvlNode *cursor = root;
-  AvlNode *tail = nullptr;
-  AvlNode *newNode = nullptr;
-
-  if(!root){
-      root = new AvlNode(key);
-      return;
-    }
-
-  while(cursor){
-      tail = cursor;
-      if(key < cursor->data)
-        cursor = cursor->left;
-      else if(key > cursor->data)
-        cursor = cursor->rigth;
-      else{
-          cout << key << " is already present on the tree";
-          return;
-        }
-    }
-
-  newNode = new AvlNode(key);
-
-  if(key < tail->data)
-    tail->left = newNode;
-  else
-    tail->rigth = newNode;
-}*/
-
 AvlNode * AvlTree::search(int key){
   AvlNode *cursor = root;
 
@@ -152,6 +126,76 @@ int AvlTree::balanceFactor(AvlNode *node){
   return hl - hr;
 }
 
+AvlNode * AvlTree::llRotation(AvlNode *node){
+  AvlNode *left = node->left;
+  AvlNode *leftRight = left->rigth;
+
+  left->rigth = node;
+  node->left = leftRight;
+  node->height = nodeHeight(node);
+  left->height = nodeHeight(left);
+
+  if(root ==  node)
+    root = left;
+
+  return left;
+}
+
+AvlNode * AvlTree::lrRotation(AvlNode *node){
+  AvlNode *left = node->left;
+  AvlNode *leftRight = left->rigth;
+
+  left->rigth = leftRight->left;
+  node->left = leftRight->rigth;
+
+  leftRight->left = left;
+  leftRight->rigth = node;
+
+  left->height = nodeHeight(left);
+  node->height = nodeHeight(node);
+  leftRight->height = nodeHeight(leftRight);
+
+  if(root == node)
+    root = leftRight;
+
+  return leftRight;
+}
+
+AvlNode * AvlTree::rrRotation(AvlNode *node){
+  AvlNode *right = node->rigth;
+
+  node->rigth = right->left;
+  right->left = node;
+
+  right->left->height = nodeHeight(right->left);
+  right->height = nodeHeight(right);
+
+  if(root == node)
+    root = right;
+
+  return right;
+}
+
+AvlNode * AvlTree::rlRotation(AvlNode *node){
+  AvlNode *rightLeft = node->rigth->left;
+
+  node->rigth->left = rightLeft->rigth;
+  rightLeft->rigth = node->rigth;
+
+  node->rigth = rightLeft->left;
+  rightLeft->left = node;
+
+  rightLeft->left->height = nodeHeight(rightLeft->left);
+  rightLeft->rigth->height = nodeHeight(rightLeft->rigth);
+  rightLeft->height = nodeHeight(rightLeft);
+
+  if(root == node)
+    root = rightLeft;
+
+  return rightLeft;
+}
+
+
 AvlNode * AvlTree::insert(AvlNode *node, int key){
   if(!node){
       AvlNode *newNode = new AvlNode(key);
@@ -163,7 +207,14 @@ AvlNode * AvlTree::insert(AvlNode *node, int key){
     node->rigth = insert(node->rigth, key);
 
   node->height = nodeHeight(node);
-  //if(balanceFactor(node) == 2 && balanceFactor(node->left) == 1)
+  if(balanceFactor(node) == 2 && balanceFactor(node->left) == 1)
+    return llRotation(node);
+  else if(balanceFactor(node) == 2 && balanceFactor(node->left) == -1)
+    return lrRotation(node);
+  else if(balanceFactor(node) == -2 && balanceFactor(node->left) == -1)
+    return rrRotation(node);
+  else if(balanceFactor(node) == -2 && balanceFactor(node->left) == 1)
+    return rlRotation(node);
 
   return node;
 }
