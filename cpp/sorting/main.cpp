@@ -243,7 +243,7 @@ int main(int argc, char *argv[])
   display(countSortArr, n);
 
   cout << "Shell Sort:     " ;
-  shellSort(shellSortArr, n + 1);
+  shellSort(shellSortArr, n);
   display(shellSortArr, n);
 
   return a.exec();
