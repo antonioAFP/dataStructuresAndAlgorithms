@@ -18,6 +18,16 @@ int cost [][8] = {
 int near[8] = {I,I,I,I,I,I,I,I};
 int t[2][6];
 
+int edges[3][9] = {
+  {1,1,2,2,3,4,4,5,5},
+  {2,6,3,7,4,5,7,6,7},
+  {25,5,12,10,8,16,14,20,18}
+};
+
+int set[8] = {-1,-1,-1,-1,-1,-1,-1,-1};
+int included[9] = {0};
+
+
 using namespace std;
 
 //Breadth First Search
@@ -58,6 +68,34 @@ void dfs(int g[][7], int start, int n){
     }
 }
 
+void myUnion(int u, int v){
+  if(set[u] < set[v]){
+      set[u]+= set[v];
+      set[v] = u;
+    }else{
+      set[v] += set[u];
+      set[u] = v;
+    }
+}
+
+int find(int u){
+  int x = u, v =0;
+  while (set[x] > 0) {
+      x = set[x];
+    }
+
+  while (u != x) {
+      v = set[u];
+      set[u] = x;
+      u = v;
+    }
+
+  return x;
+}
+
+
+
+
 
 int main(int argc, char *argv[])
 {
@@ -79,7 +117,7 @@ int main(int argc, char *argv[])
   dfs(graph, 1, 7);
 
   //spanning tree, Prims
-  int i, j, k, u, v, n = 7, min = I;
+  int i, j, k, u, v, n = 7, min = I, e = 9;
 
   for(i = 1; i <= n; i++){
       for(j = i; j <= n; j++){
@@ -124,9 +162,38 @@ int main(int argc, char *argv[])
         }
     }
 
-  cout << endl << " -- Spanning tree:  -- " << endl;
+  cout << endl << " -- Prim Spanning tree:  -- " << endl;
   for(i = 0; i < n - 1; i++)
     cout << "(" << t[0][i] << "," << t[1][i] << ")" << endl;
+
+  //Krushkal's algorithm
+  i = j =k = u = v = 0;
+  while (i < n-1) {
+      min = I;
+      for (j = 0;j < e;j++) {  //minimun edge
+          if(included[j] == 0 && edges[2][j] < min){
+              min = edges[2][j];
+              u = edges[0][j];
+              v = edges[1][j];
+              k = j;
+            }
+        }
+
+      if(find(u) != find(v)){
+          t[0][i] = u;
+          t[1][i] = v;
+          myUnion(find(u), find(v));
+          i++;
+        }
+
+      included[k] = 1;
+
+    }
+
+  cout << endl << " -- Krushkal Spanning tree:  -- " << endl;
+  for(i = 0; i < n - 1; i++)
+    cout << "(" << t[0][i] << "," << t[1][i] << ")" << endl;
+
 
   return a.exec();
 }
